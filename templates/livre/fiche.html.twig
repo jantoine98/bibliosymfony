@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Fiche Livre{% endblock %}
+
+{% block h1 %}Fiche du livre n°{{ livre.id }}{% endblock %}
+
+{% block body %}
+    <ul class="list-group">
+        <li class="list-group-item">
+            <strong>Id:</strong> {{ livre.id }}
+        </li>
+        <li class="list-group-item">
+                <strong>Titre:</strong> {{ livre.titre }}
+        </li>
+        <li class="list-group-item">
+            <strong>Auteur:</strong> {{ livre.auteur }}
+        </li>
+        <li class="list-group-item">
+            <strong>Couverture : </strong>
+            <img src="{{ asset("img/" ~ livre.couverture) }}" alt="pas de couverture">
+        </li>
+        <li class="list-group-item">
+            <table class="table table-bored">
+                <thead class="thead-dark">
+                    <tr>
+                        <th colspan=2>Emprunts</th>
+                        <th>Nb d'emprunts : {{ livre.emprunts|length }}</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <th>Abonné</th>
+                            <th>Emprunté le</th>
+                            <th>Rendu le</th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for emprunt in livre.emprunts %}
+                        <tr>
+                            <td>{{ emprunt.abonne.pseudo }}</td>
+                            <td>{{ emprunt.dateEmprunt|date("d/m/Y") }}</td>
+                            <td>{{ emprunt.dateRetour is null ? "à rendre" : emprunt.dateRetour|date("d/m/Y") }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </li>
+    </ul>
+{% endblock %}

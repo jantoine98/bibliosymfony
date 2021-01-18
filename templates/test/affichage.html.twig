@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %} 
+ 
+{% block body %}
+    <p>Le prénom est {{ tab.prenom }}</p>
+    <p>Le nom est {{ tab.nom }}</p>
+    <p>Il a {{ tab.age }} ans</p>
+    <p>Il habite à {{ tab.ville }}</p>
+
+    <h3>FOREACH</h3>
+    {% for val in tab2 %}
+        {{ val ~ " -" }}
+    {% endfor %} 
+
+    <h3>FOR</h3>
+    {% for i 0..4 %}
+        <tr>
+            <td>{{ i }}</td>
+            <td>{{ tab2[i] }}</td>
+        </tr>
+    {% endfor %} 
+
+    <h3>FOREACH (avec indice)</h3>
+    {% for indice, val in tab2 %}
+        <tr>
+            <td>{{ indice }}</td>
+            <td>{{ val }}</td>
+        </tr>
+    {% endfor %}
+{% endblock %}

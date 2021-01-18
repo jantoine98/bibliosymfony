@@ -1,0 +1,26 @@
+{#Commentaires Twig
+    {% %} : baslise twig
+    extends : permet de dire que la vue actuelle hérite d'une autre vue
+            le nom du fichier est donné à partir du dossier "template"
+            Le contenu qui va être affiché par la vue parent doit être dans une balise block
+    {% block nom_du_block %} {% endblock %}
+
+#}
+{% extends "base.html.twig" %}
+
+
+
+{% block body %}
+    
+    {{ parent() }}
+   
+    <h2>Bonjour</h2>
+{% endblock %}
+
+{% block title %}
+    Salutations
+{% endblock %}
+
+{% block h1 %}
+    Salutations
+{% endblock %}
